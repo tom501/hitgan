@@ -9,9 +9,7 @@ def convert_to_jpeg(image_path):
     # img.point(lambda i:i*(1./256)).convert('P') 
     img = img / numpy.amax(img) * 255
     img = img.astype(numpy.uint8)
-    print(numpy.max(img), numpy.min(img))
     img = Image.fromarray(img)
-    print(img.mode)
     return img
 
 def create_folder_structure(source_dir, destination_dir):
@@ -22,7 +20,6 @@ def create_folder_structure(source_dir, destination_dir):
 
         for filename in files:
             if filename.endswith('.tiff'):
-                print(filename)
                 patient_slice_dir = os.path.join(destination_dir, os.path.basename(os.path.dirname(root)))
                 os.makedirs(patient_slice_dir, exist_ok=True)
                 patient_slice_subdir = os.path.join(patient_slice_dir, os.path.basename(root))
@@ -36,7 +33,6 @@ def create_folder_structure(source_dir, destination_dir):
                 image = convert_to_jpeg(dest_image_path)
                 dest_jpeg_path = os.path.splitext(dest_image_path)[0] + '.jpg'
                 image.save(dest_jpeg_path)
-                os.remove(dest_image_path)
 
 
 def main():
