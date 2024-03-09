@@ -7,8 +7,12 @@ def convert_to_jpeg(image_path):
     img =  numpy.array(Image.open(image_path))
     # img.mode = 'I'
     # img.point(lambda i:i*(1./256)).convert('P') 
+    img = img / numpy.amax(img) * 255
     img = img.astype(numpy.uint8)
-    return Image.fromarray(img / numpy.amax(img) * 255)
+    print(numpy.max(img), numpy.min(img))
+    img = Image.fromarray(img)
+    print(img.mode)
+    return img
 
 def create_folder_structure(source_dir, destination_dir):
     for root, dirs, files in os.walk(source_dir):
