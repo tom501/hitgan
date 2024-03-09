@@ -5,7 +5,7 @@ from PIL import Image
 def convert_to_jpeg(image_path):
     img = Image.open(image_path)
     img.mode = 'I'
-    img.point(lambda i:i*(1./256)).convert('L')
+    img.point(lambda i:i*(1./256)).convert('P')
     return img
 
 def create_folder_structure(source_dir, destination_dir):
@@ -16,11 +16,13 @@ def create_folder_structure(source_dir, destination_dir):
 
         for filename in files:
             if filename.endswith('.tiff'):
+                print(filename)
                 patient_slice_dir = os.path.join(destination_dir, os.path.basename(os.path.dirname(root)))
                 os.makedirs(patient_slice_dir, exist_ok=True)
                 patient_slice_subdir = os.path.join(patient_slice_dir, os.path.basename(root))
                 os.makedirs(patient_slice_subdir, exist_ok=True)
                 source_image_path = os.path.join(root, filename)
+                print(source_image_path)
                 dest_image_path = os.path.join(patient_slice_subdir, filename)
                 shutil.copy(source_image_path, dest_image_path)
 
