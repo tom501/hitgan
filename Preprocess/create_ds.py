@@ -1,12 +1,13 @@
 import os
 import shutil
+import numpy
 from PIL import Image
 
 def convert_to_jpeg(image_path):
-    img = Image.open(image_path)
-    img.mode = 'I'
-    img.point(lambda i:i*(1./256)).convert('P')
-    return img
+    img =  numpy.array(Image.open(image_path))
+    # img.mode = 'I'
+    # img.point(lambda i:i*(1./256)).convert('P') 
+    return Image.fromarray(img / numpy.amax(img) * 255)
 
 def create_folder_structure(source_dir, destination_dir):
     for root, dirs, files in os.walk(source_dir):
