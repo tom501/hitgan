@@ -102,7 +102,7 @@ flags.DEFINE_enum('gan_loss_type', 'non-saturating',
 flags.DEFINE_enum('grad_penalty_type', 'r1', ['r1', 'wgan'],
                   'gradieht penalty type (r1 or wgan).')
 
-flags.DEFINE_float('grad_penalty_cost', 10.0, 'Weight of the gradieht penalty.')
+flags.DEFINE_float('grad_penalty_cost', 10.0, 'Weight of the gradient penalty.')
 
 flags.DEFINE_integer('channel_multiplier', 1,
                      'Factor of channel dimensions for the discriminator.')
