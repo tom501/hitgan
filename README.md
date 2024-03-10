@@ -45,6 +45,11 @@ python run.py --mode=train --train_batch_size=2
 --use_ema_model=false --grad_penalty_type=wgan --dataset=Original
 ```
 
+```
+python run.py --mode=train --train_batch_size=2 --train_steps=500000 --image_crop_size=512 --image_crop_proportion=1.0 --save_every_n_steps=1000 --latent_dim=512 --generator_lr=0.00005 --discriminator_lr=0.00005 --channel_multiplier=1 --use_consistency_regularization=True --data_dir=/home/prosjekt/PerfusionCT/StrokeSUS/GAN_project_2023/ORIGINAL_JPEG --model_dir=/home/prosjekt/PerfusionCT/StrokeSUS/GAN_project_2023/Model_dir --use_tpu=False --use_ema_model=false --grad_penalty_type=wgan --dataset=Original
+```
+
+
 
 ## Evaluate model
 This can be done in parallell with the training or one time in the end 
