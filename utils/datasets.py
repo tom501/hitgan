@@ -124,7 +124,7 @@ class FFHQ(DatasetBuilder):
 
   def __init__(self, **kwargs: Any) -> None:
     super().__init__(**kwargs)
-    resolution = 256#int(self._dataset_name.split("/")[-1])
+    resolution = 512#int(self._dataset_name.split("/")[-1])
     log2_resolution = int(math.log2(resolution))
     data_dir = self._data_dir
     
