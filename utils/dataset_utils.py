@@ -145,7 +145,7 @@ def build_input_fn(builder,
     logging.info('Per-replica batch size: %d', batch_size)
 
     dataset = dataset = tf.keras.preprocessing.image_dataset_from_directory(
-    '/bhome/ovier/master/exp_2d_1/Code/data/Size_256/Original',
+    '/home/prosjekt/PerfusionCT/StrokeSUS/GAN_project_2023/ORIGINAL_JPEG',
     labels='inferred',
     label_mode = "int",
     color_mode='grayscale',

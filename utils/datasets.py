@@ -58,7 +58,7 @@ class DatasetBuilder(abc.ABC):
     """Gets dataset mapping function."""
     crop_mode = self._train_crop_mode if training else self._eval_crop_mode
     preprocess_fn = tf.keras.preprocessing.image_dataset_from_directory(
-    '/bhome/ovier/master/exp_2d_1/Code/data/Size_256/Original',
+    '/home/prosjekt/PerfusionCT/StrokeSUS/GAN_project_2023/ORIGINAL_JPEG',
     labels='inferred',
     label_mode = "int",
     color_mode='grayscale',
@@ -100,7 +100,7 @@ class TFDSBuilder(DatasetBuilder):
   def get_dataset(self, training: bool = False) -> tf.data.Dataset:
     split = self._train_split if training else self._eval_split
     dataset = tf.keras.preprocessing.image_dataset_from_directory(
-    '/bhome/ovier/master/exp_2d_1/Code/data/Size_256/Original',
+    '/home/prosjekt/PerfusionCT/StrokeSUS/GAN_project_2023/ORIGINAL_JPEG',
     labels='inferred',
     label_mode = "int",
     color_mode='grayscale',
