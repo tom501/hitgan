@@ -47,7 +47,7 @@ class BaseTrainer(abc.ABC):
                dataset: Text,
                train_steps: int,
                data_dir: Optional[Text] = None,
-               image_crop_size: int = 256,
+               image_crop_size: int = 512,
                image_aspect_ratio: float = 1.0,
                image_crop_proportion: float = 1.0,
                random_flip: bool = False,
@@ -217,6 +217,8 @@ class BaseTrainer(abc.ABC):
       labels='inferred',
       label_mode = "int",
       color_mode='rgb',
+      image_size=(self.image_crop_size, self.image_crop_size),
+      shuffle=True,
       batch_size=self.train_batch_size)
     return train_ds
 
@@ -227,6 +229,7 @@ class BaseTrainer(abc.ABC):
     with self.strategy.scope():
       for i in range (self.run_trough_dataset):
         train = self.load_dataset()
+        print(train, self.data_dir)
         train_ds.append(train)
       checkpoint_manager = self.restore_from_checkpoint()
       #tf.summary.trace_on(graph=True, profiler=True)
