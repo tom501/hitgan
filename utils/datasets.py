@@ -240,7 +240,6 @@ def get_dataset(dataset_name: Text,
         train_crop_mode="fixed",
         eval_crop_mode="fixed")
   elif dataset_name == "Original":
-    print("original")
     dataset = TFDSBuilder(
         dataset_name=dataset_name,
         data_dir=data_dir,
