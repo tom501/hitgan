@@ -174,7 +174,7 @@ class HiTGenerator(tf.keras.Model):
       patch_size_per_block = [4, 4, 8, 8, None, None]
     elif output_size == 512:
       num_layers_per_block = [2, 2, 2, 2, 1, 1, 1]
-      channel_dim_per_block = [512, 512, 256, 128, 64, 32, 32]
+      channel_dim_per_block = [512, 512, 256, 128, 64, 64, 32]
       num_heads_per_block = [16, 8, 4, 4, 4, 4, 4]
       patch_size_per_block = [4, 4, 8, 8, None, None, None]
     elif output_size == 1024:

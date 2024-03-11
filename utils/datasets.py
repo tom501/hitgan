@@ -137,7 +137,7 @@ class FFHQ(DatasetBuilder):
 
   def get_dataset(self, training: bool = False) -> tf.data.Dataset:
     dataset = tf.data.TFRecordDataset(
-        self._tfrecord_path, buffer_size=256 << 20)
+        self._tfrecord_path, buffer_size=512 << 20)
     dataset = dataset.take(
         self.DATASET_SIZE if training else self.EVAL_DATASET_SIZE)
     return dataset
