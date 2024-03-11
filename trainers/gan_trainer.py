@@ -143,9 +143,7 @@ class GANTrainer(base_trainer.BaseTrainer):
             self.ema_generator.variables, self.generator.variables)
 
   def _train_one_step(self, inputs):
-    print("*"*50, "inputs ", inputs)
     real_images = inputs[0]/255.0
-    print("*"*50, "real_images", real_images.shape)
    
    
     #real_images = inputs['images']
@@ -165,14 +163,11 @@ class GANTrainer(base_trainer.BaseTrainer):
         self.summary_writer.flush()  
       
     
-
-      print("*"*50, "fake_logits", tf.shape(fake_images))
       fake_logits = self.discriminator(fake_images, training=True)
       
       # if self.global_step+1%100==0:
-      print(self.generator.summary())
-      print("-"*100)
-      print(self.discriminator.summary())
+      # print(self.generator.summary())
+      # print(self.discriminator.summary())
      
 
       if self._grad_penalty_type == 'r1':
@@ -181,7 +176,6 @@ class GANTrainer(base_trainer.BaseTrainer):
             real_images,
             penalty_cost=self._grad_penalty_cost)
       elif self._grad_penalty_type == 'wgan':
-        print("*"*50, "real_logits", tf.shape(real_images))
         real_logits = self.discriminator(real_images, training=True)
         _, grad_penalty = losses.wgan_gradient_penalty(
             self.discriminator,

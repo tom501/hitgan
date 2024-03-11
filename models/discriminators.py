@@ -336,8 +336,6 @@ class StyleGANDiscriminator(tf.keras.Model):
     ])
 
   def call(self, inputs: tf.Tensor) -> tf.Tensor:
-    print(" @@@@@@@@ inputs.shape", inputs.shape)
     outputs = self.conv_blocks(inputs)
-    print("@@@@@@@ outputs.shape", outputs.shape)
     outputs = self.final_layers(outputs)
     return outputs

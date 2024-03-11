@@ -237,7 +237,6 @@ class BaseTrainer(abc.ABC):
     @tf.function
     def train_multiple_steps(iterator):
       for _ in tf.range(214/self.train_batch_size):#214 for raw ctp, 240 for preprocessed images
-        print("next(iterator),", next(iterator),iterator)
         self.strategy.run(self._train_one_step, args=(next(iterator),))
 
     
