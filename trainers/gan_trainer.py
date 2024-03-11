@@ -144,7 +144,7 @@ class GANTrainer(base_trainer.BaseTrainer):
 
   def _train_one_step(self, inputs):
     real_images = inputs[0]/255.0
-    print(tf.shape(real_images))
+    print("*"*50, tf.shape(real_images))
    
    
     #real_images = inputs['images']
