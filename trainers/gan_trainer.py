@@ -143,8 +143,9 @@ class GANTrainer(base_trainer.BaseTrainer):
             self.ema_generator.variables, self.generator.variables)
 
   def _train_one_step(self, inputs):
+    print("*"*50, "inputs ", inputs)
     real_images = inputs[0]/255.0
-    print("*"*50, tf.shape(real_images))
+    print("*"*50, "real_images", real_images.shape)
    
    
     #real_images = inputs['images']
